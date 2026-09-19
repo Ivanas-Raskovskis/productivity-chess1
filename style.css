@@ -177,3 +177,73 @@ input[type="checkbox"] {
   accent-color: #6fcf97;
   cursor: pointer;
 }
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-box {
+  background: #1f1f2e;
+  border-radius: 16px;
+  padding: 32px;
+  width: 320px;
+  max-width: 88vw;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-box h2 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+.modal-box p {
+  color: #ccc;
+  font-size: 15px;
+}
+
+.modal-stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.modal-stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-stats span {
+  font-size: 22px;
+  font-weight: 700;
+  color: #6fcf97;
+}
+
+.modal-stats small {
+  color: #888;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.modal-box button {
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #6fcf97, #56ccf2);
+  color: #0f0f0f;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+}
