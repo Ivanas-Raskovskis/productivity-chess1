@@ -27,5 +27,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
   <script src="script.js"></script>
+    <div id="game-over-modal" class="modal-overlay">
+    <div class="modal-box">
+      <h2 id="modal-title">Partija baigta</h2>
+      <p id="modal-message"></p>
+      <div class="modal-stats">
+        <div><span id="stat-wins">0</span><small>Pergalės</small></div>
+        <div><span id="stat-losses">0</span><small>Pralaimėjimai</small></div>
+        <div><span id="stat-draws">0</span><small>Lygiosios</small></div>
+      </div>
+      <button onclick="startNewGame()">Nauja partija</button>
+    </div>
+  </div>
 </body>
 </html>
