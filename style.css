@@ -1,86 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #1a1a1a;
-  color: white;
-  font-family: sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+  color: #f1f1f1;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 40px;
+  padding: 50px 20px 80px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #6fcf97, #56ccf2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h1::before {
+  content: "♟️ ";
+  -webkit-text-fill-color: initial;
+}
+
+#moves-counter {
+  margin-top: 4px;
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6fcf97;
+  background: rgba(111, 207, 151, 0.1);
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(111, 207, 151, 0.3);
 }
 
 #board {
   width: 480px;
+  max-width: 92vw;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
 #status {
-  margin-top: 20px;
-  font-size: 18px;
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #cfcfcf;
   min-height: 24px;
-}
-
-#moves-counter {
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #6fcf97;
 }
 
 #tasks {
   margin-top: 40px;
   width: 480px;
-  background: #2a2a2a;
-  padding: 20px;
-  border-radius: 8px;
+  max-width: 92vw;
+  background: #1f1f2e;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 #tasks h2 {
   margin-top: 0;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .task {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid #3a3a3a;
+  padding: 10px 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.15s ease;
+  border-radius: 6px;
+}
+
+.task:hover {
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .task-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+}
+
+.task-name {
+  font-size: 15px;
 }
 
 .task.done .task-name {
   text-decoration: line-through;
-  color: #777;
+  color: #6a6a6a;
 }
 
 .task-reward {
   color: #6fcf97;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(111, 207, 151, 0.12);
+  padding: 3px 10px;
+  border-radius: 999px;
 }
 
 .add-task {
   display: flex;
-  gap: 8px;
-  margin-top: 15px;
+  gap: 10px;
+  margin-top: 18px;
 }
 
 .add-task input {
   flex: 1;
-  padding: 8px;
-  border-radius: 4px;
-  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #14141f;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+.add-task input::placeholder {
+  color: #777;
+}
+
+.add-task input:focus {
+  outline: none;
+  border-color: #6fcf97;
 }
 
 .add-task button {
-  padding: 8px 14px;
-  border-radius: 4px;
+  padding: 10px 18px;
+  border-radius: 8px;
   border: none;
-  background: #6fcf97;
+  background: linear-gradient(90deg, #6fcf97, #56ccf2);
+  color: #0f0f0f;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 14px;
+  transition: opacity 0.15s ease;
+}
+
+.add-task button:hover {
+  opacity: 0.85;
 }
 
 .task button.remove {
@@ -89,4 +163,17 @@ body {
   color: #e57373;
   cursor: pointer;
   font-size: 16px;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+.task button.remove:hover {
+  opacity: 1;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #6fcf97;
+  cursor: pointer;
 }
