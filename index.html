@@ -14,6 +14,7 @@
   <div id="board"></div>
   <div id="status">Baltųjų ėjimas</div>
   <button id="new-game-btn" onclick="confirmNewGame()">🔄 Nauja partija</button>
+
   <div id="tasks">
     <h2>📋 Today's Tasks</h2>
     <div id="task-list"></div>
@@ -23,11 +24,7 @@
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
-  <script src="script.js"></script>
-    <div id="game-over-modal" class="modal-overlay">
+  <div id="game-over-modal" class="modal-overlay">
     <div class="modal-box">
       <h2 id="modal-title">Partija baigta</h2>
       <p id="modal-message"></p>
@@ -39,5 +36,10 @@
       <button onclick="startNewGame()">Nauja partija</button>
     </div>
   </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
