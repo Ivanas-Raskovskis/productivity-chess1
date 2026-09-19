@@ -1,5 +1,5 @@
 // ---------- LICHESS OAUTH (PKCE) ----------
-const LICHESS_CLIENT_ID = 'PASTE_YOUR_CLIENT_ID_HERE'; // <-- ČIA įrašyk savo Client ID iš Lichess
+const LICHESS_CLIENT_ID = 'productivity-chess-ivanas-raskovskis'; // <-- ČIA įrašyk savo Client ID iš Lichess
 const LICHESS_REDIRECT_URI = 'https://ivanas-raskovskis.github.io/productivity-chess1/';
 const LICHESS_SCOPE = 'board:play';
 
