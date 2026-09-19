@@ -115,7 +115,6 @@ function makeAiMove() {
   board.position(game.fen());
   updateStatus();
 }
-
 function updateStatus() {
   let status = '';
   const moveColor = game.turn() === 'w' ? 'Baltųjų' : 'Juodųjų';
