@@ -40,17 +40,81 @@ function onSnapEnd() {
   board.position(game.fen());
 }
 
+const PIECE_VALUES = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
+
+function evaluateBoard(chess) {
+  const board = chess.board();
+  let score = 0;
+
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 8; col++) {
+      const square = board[row][col];
+      if (square) {
+        const value = PIECE_VALUES[square.type];
+        score += square.color === 'w' ? value : -value;
+      }
+    }
+  }
+
+  return score;
+}
+
+function minimax(chess, depth, alpha, beta, isMaximizing) {
+  if (depth === 0 || chess.game_over()) {
+    return evaluateBoard(chess);
+  }
+
+  const moves = chess.moves();
+
+  if (isMaximizing) {
+    let maxEval = -Infinity;
+    for (const move of moves) {
+      chess.move(move);
+      const evalScore = minimax(chess, depth - 1, alpha, beta, false);
+      chess.undo();
+      maxEval = Math.max(maxEval, evalScore);
+      alpha = Math.max(alpha, evalScore);
+      if (beta <= alpha) break;
+    }
+    return maxEval;
+  } else {
+    let minEval = Infinity;
+    for (const move of moves) {
+      chess.move(move);
+      const evalScore = minimax(chess, depth - 1, alpha, beta, true);
+      chess.undo();
+      minEval = Math.min(minEval, evalScore);
+      beta = Math.min(beta, evalScore);
+      if (beta <= alpha) break;
+    }
+    return minEval;
+  }
+}
+
 function makeAiMove() {
   if (game.game_over()) return;
 
   const possibleMoves = game.moves();
   if (possibleMoves.length === 0) return;
 
-  const randomIndex = Math.floor(Math.random() * possibleMoves.length);
-  game.move(possibleMoves[randomIndex]);
+  let bestMove = null;
+  let bestValue = Infinity; // AI yra juodieji, tad ieško mažiausio (blogiausio baltiesiems) rezultato
 
+  for (const move of possibleMoves) {
+    game.move(move);
+    const boardValue = minimax(game, 2, -Infinity, Infinity, true);
+    game.undo();
+
+    if (boardValue < bestValue) {
+      bestValue = boardValue;
+      bestMove = move;
+    }
+  }
+
+  game.move(bestMove);
   board.position(game.fen());
   updateStatus();
+}
 }
 
 function updateStatus() {
