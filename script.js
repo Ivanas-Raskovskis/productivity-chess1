@@ -181,6 +181,17 @@ function startNewGame() {
   document.getElementById('game-over-modal').classList.remove('show');
   updateStatus();
 }
+function confirmNewGame() {
+  if (game.history().length === 0) {
+    startNewGame();
+    return;
+  }
+
+  const sure = confirm('Ar tikrai nori pradėti naują partiją? Dabartinė progresas bus prarastas.');
+  if (sure) {
+    startNewGame();
+  }
+}
 
 const config = {
   draggable: true,
