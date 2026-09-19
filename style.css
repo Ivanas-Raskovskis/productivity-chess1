@@ -266,3 +266,55 @@ input[type="checkbox"] {
   color: white;
   border-color: rgba(255, 255, 255, 0.3);
 }
+#lichess-section {
+  margin-top: 40px;
+  width: 480px;
+  max-width: 92vw;
+  background: #1f1f2e;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+#lichess-section h2 {
+  margin-top: 0;
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+#lichess-login-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #6fcf97;
+  color: #0f0f0f;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.lichess-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.lichess-ratings {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.lichess-card button {
+  padding: 6px 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
