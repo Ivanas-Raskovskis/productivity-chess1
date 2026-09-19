@@ -43,12 +43,12 @@ function onSnapEnd() {
 const PIECE_VALUES = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
 
 function evaluateBoard(chess) {
-  const board = chess.board();
+  const boardState = chess.board();
   let score = 0;
 
   for (let row = 0; row < 8; row++) {
     for (let col = 0; col < 8; col++) {
-      const square = board[row][col];
+      const square = boardState[row][col];
       if (square) {
         const value = PIECE_VALUES[square.type];
         score += square.color === 'w' ? value : -value;
@@ -98,7 +98,7 @@ function makeAiMove() {
   if (possibleMoves.length === 0) return;
 
   let bestMove = null;
-  let bestValue = Infinity; // AI yra juodieji, tad ieško mažiausio (blogiausio baltiesiems) rezultato
+  let bestValue = Infinity;
 
   for (const move of possibleMoves) {
     game.move(move);
@@ -115,16 +115,15 @@ function makeAiMove() {
   board.position(game.fen());
   updateStatus();
 }
-}
 
 function updateStatus() {
   let status = '';
   const moveColor = game.turn() === 'w' ? 'Baltųjų' : 'Juodųjų';
 
   if (game.in_checkmate()) {
-    const winner = game.turn() === 'w' ? 'AI' : 'Tu';
+    const winnerIsPlayer = game.turn() !== 'w';
     status = 'Šachmatas! ' + moveColor + ' pralaimėjo.';
-    showGameOver(winner === 'Tu' ? 'win' : 'loss');
+    showGameOver(winnerIsPlayer ? 'win' : 'loss');
   } else if (game.in_draw()) {
     status = 'Lygiosios.';
     showGameOver('draw');
@@ -181,13 +180,14 @@ function startNewGame() {
   document.getElementById('game-over-modal').classList.remove('show');
   updateStatus();
 }
+
 function confirmNewGame() {
   if (game.history().length === 0) {
     startNewGame();
     return;
   }
 
-  const sure = confirm('Ar tikrai nori pradėti naują partiją? Dabartinė progresas bus prarastas.');
+  const sure = confirm('Ar tikrai nori pradėti naują partiją? Dabartinis progresas bus prarastas.');
   if (sure) {
     startNewGame();
   }
