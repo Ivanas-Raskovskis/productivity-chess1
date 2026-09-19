@@ -58,9 +58,12 @@ function updateStatus() {
   const moveColor = game.turn() === 'w' ? 'Baltųjų' : 'Juodųjų';
 
   if (game.in_checkmate()) {
+    const winner = game.turn() === 'w' ? 'AI' : 'Tu';
     status = 'Šachmatas! ' + moveColor + ' pralaimėjo.';
+    showGameOver(winner === 'Tu' ? 'win' : 'loss');
   } else if (game.in_draw()) {
     status = 'Lygiosios.';
+    showGameOver('draw');
   } else {
     status = moveColor + ' ėjimas';
     if (game.turn() === 'b') status = 'AI galvoja...';
@@ -69,6 +72,50 @@ function updateStatus() {
     }
   }
   statusEl.textContent = status;
+}
+
+function getStats() {
+  return JSON.parse(localStorage.getItem('stats') || '{"wins":0,"losses":0,"draws":0}');
+}
+
+function saveStats(stats) {
+  localStorage.setItem('stats', JSON.stringify(stats));
+}
+
+function showGameOver(result) {
+  const stats = getStats();
+  const modal = document.getElementById('game-over-modal');
+  const title = document.getElementById('modal-title');
+  const message = document.getElementById('modal-message');
+
+  if (result === 'win') {
+    stats.wins++;
+    title.textContent = '🎉 Laimėjai!';
+    message.textContent = 'Puikus žaidimas! AI buvo įveiktas.';
+  } else if (result === 'loss') {
+    stats.losses++;
+    title.textContent = '😔 Pralaimėjai';
+    message.textContent = 'Kitą kartą pasiseks geriau.';
+  } else {
+    stats.draws++;
+    title.textContent = '🤝 Lygiosios';
+    message.textContent = 'Nė vienas nelaimėjo šįkart.';
+  }
+
+  saveStats(stats);
+
+  document.getElementById('stat-wins').textContent = stats.wins;
+  document.getElementById('stat-losses').textContent = stats.losses;
+  document.getElementById('stat-draws').textContent = stats.draws;
+
+  modal.classList.add('show');
+}
+
+function startNewGame() {
+  game.reset();
+  board.position('start');
+  document.getElementById('game-over-modal').classList.remove('show');
+  updateStatus();
 }
 
 const config = {
