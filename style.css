@@ -1,0 +1,92 @@
+body {
+  background: #1a1a1a;
+  color: white;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+#board {
+  width: 480px;
+}
+
+#status {
+  margin-top: 20px;
+  font-size: 18px;
+  min-height: 24px;
+}
+
+#moves-counter {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #6fcf97;
+}
+
+#tasks {
+  margin-top: 40px;
+  width: 480px;
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+#tasks h2 {
+  margin-top: 0;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task.done .task-name {
+  text-decoration: line-through;
+  color: #777;
+}
+
+.task-reward {
+  color: #6fcf97;
+  font-size: 14px;
+}
+
+.add-task {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+}
+
+.add-task button {
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: none;
+  background: #6fcf97;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.task button.remove {
+  background: none;
+  border: none;
+  color: #e57373;
+  cursor: pointer;
+  font-size: 16px;
+}
