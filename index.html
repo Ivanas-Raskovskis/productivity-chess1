@@ -20,6 +20,7 @@
     #status {
       margin-top: 20px;
       font-size: 18px;
+      min-height: 24px;
     }
     #moves-counter {
       margin-top: 10px;
@@ -120,12 +121,11 @@
 
     function onDragStart(source, piece) {
       if (game.game_over()) return false;
+      // Žaidėjas visada baltais, AI visada juodais
+      if (piece.search(/^b/) !== -1) return false;
+      if (game.turn() !== 'w') return false;
       if (availableMoves <= 0) {
         alert('Neturi likusių ėjimų! Atlik užduotį, kad gautum ėjimą.');
-        return false;
-      }
-      if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
-          (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
         return false;
       }
     }
@@ -142,10 +142,26 @@
       availableMoves--;
       updateMovesDisplay();
       updateStatus();
+
+      // Po žaidėjo ėjimo, AI atsako po trumpos pauzės
+      window.setTimeout(makeAiMove, 500);
     }
 
     function onSnapEnd() {
       board.position(game.fen());
+    }
+
+    function makeAiMove() {
+      if (game.game_over()) return;
+
+      const possibleMoves = game.moves();
+      if (possibleMoves.length === 0) return;
+
+      const randomIndex = Math.floor(Math.random() * possibleMoves.length);
+      game.move(possibleMoves[randomIndex]);
+
+      board.position(game.fen());
+      updateStatus();
     }
 
     function updateStatus() {
@@ -158,6 +174,7 @@
         status = 'Lygiosios.';
       } else {
         status = moveColor + ' ėjimas';
+        if (game.turn() === 'b') status = 'AI galvoja...';
         if (game.in_check()) {
           status += ' (Šachas!)';
         }
