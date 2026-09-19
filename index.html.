@@ -1,1 +1,55 @@
-<h1>Productivity Chess</h1> <p>Pirmas puslapis</p>
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <title>Productivity Chess</title>
+  <style>
+    body {
+      background: #1a1a1a;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 40px;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(8, 60px);
+      grid-template-rows: repeat(8, 60px);
+      border: 4px solid #333;
+    }
+
+    .square {
+      width: 60px;
+      height: 60px;
+    }
+
+    .light {
+      background-color: #eeeed2;
+    }
+
+    .dark {
+      background-color: #769656;
+    }
+  </style>
+</head>
+<body>
+  <h1>Productivity Chess</h1>
+  <div class="board" id="board"></div>
+
+  <script>
+    const board = document.getElementById('board');
+    for (let row = 0; row < 8; row++) {
+      for (let col = 0; col < 8; col++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        const isLight = (row + col) % 2 === 0;
+        square.classList.add(isLight ? 'light' : 'dark');
+        board.appendChild(square);
+      }
+    }
+  </script>
+</body>
+</html>
