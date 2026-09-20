@@ -22,10 +22,21 @@
     </div>
   </div>
 
-  <div id="lichess-live-section" style="display:none;">
+    <div id="lichess-live-section" style="display:none;">
     <h2>🔴 Gyva reitinguota partija</h2>
-    <div id="lichess-game-status">Ieškoma varžovo...</div>
+    <div id="lichess-opponent">Varžovas: —</div>
+    <div class="clock-row">
+      <span id="clock-opponent" class="clock">--:--</span>
+      <span class="clock-label">Varžovas</span>
+    </div>
+    <div id="captured-top" class="captured-row"></div>
     <div id="lichess-board"></div>
+    <div id="captured-bottom" class="captured-row"></div>
+    <div class="clock-row">
+      <span id="clock-mine" class="clock">--:--</span>
+      <span class="clock-label">Tu</span>
+    </div>
+    <div id="lichess-game-status">Ieškoma varžovo...</div>
   </div>
 
   <div id="tasks">
