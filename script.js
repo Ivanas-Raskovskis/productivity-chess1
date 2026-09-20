@@ -1,5 +1,14 @@
 // ---------- ŠACHMATAI ----------
 const game = new Chess();
+
+const savedGamePgn = localStorage.getItem('gamePgn');
+if (savedGamePgn) {
+  game.load_pgn(savedGamePgn);
+}
+
+function saveGameState() {
+  localStorage.setItem('gamePgn', game.pgn());
+}
 const statusEl = document.getElementById('status');
 const movesCounterEl = document.getElementById('moves-counter');
 
@@ -32,6 +41,7 @@ function onDrop(source, target) {
   availableMoves--;
   updateMovesDisplay();
   updateStatus();
+  saveGameState();
 
   window.setTimeout(makeAiMove, 500);
 }
@@ -114,6 +124,7 @@ function makeAiMove() {
   game.move(bestMove);
   board.position(game.fen());
   updateStatus();
+  saveGameState();
 }
 
 function updateStatus() {
@@ -179,6 +190,7 @@ function startNewGame() {
   board.position('start');
   document.getElementById('game-over-modal').classList.remove('show');
   updateStatus();
+  saveGameState();
 }
 
 function confirmNewGame() {
@@ -196,6 +208,15 @@ function confirmNewGame() {
 const config = {
   draggable: true,
   position: 'start',
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onSnapEnd: onSnapEnd,
+  pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
+};
+
+const config = {
+  draggable: true,
+  position: game.fen(),
   onDragStart: onDragStart,
   onDrop: onDrop,
   onSnapEnd: onSnapEnd,
