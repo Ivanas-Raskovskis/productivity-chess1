@@ -14,17 +14,20 @@
   <div id="board"></div>
   <div id="status">Baltųjų ėjimas</div>
   <button id="new-game-btn" onclick="confirmNewGame()">🔄 Nauja partija</button>
+
   <div id="lichess-section">
     <h2>♞ Lichess paskyra</h2>
     <div id="lichess-status">
       <button id="lichess-login-btn" onclick="loginWithLichess()">Prisijungti su Lichess</button>
     </div>
   </div>
-    <div id="lichess-live-section" style="display:none;">
+
+  <div id="lichess-live-section" style="display:none;">
     <h2>🔴 Gyva reitinguota partija</h2>
     <div id="lichess-game-status">Ieškoma varžovo...</div>
     <div id="lichess-board"></div>
   </div>
+
   <div id="tasks">
     <h2>📋 Today's Tasks</h2>
     <div id="task-list"></div>
@@ -50,8 +53,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
-    <script src="script.js?v=3"></script>
-    <script src="lichess.js"></script>
-    <script src="lichess-game.js"></script>
+  <script src="script.js"></script>
+  <script src="lichess.js"></script>
+  <script src="lichess-game.js"></script>
 </body>
 </html>
