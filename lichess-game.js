@@ -18,6 +18,12 @@ async function startSeek() {
     return;
   }
 
+  const seekButton = document.querySelector('[onclick="startSeek()"]');
+  if (seekButton) {
+    seekButton.disabled = true;
+    seekButton.textContent = 'Ieškoma...';
+  }
+
   document.getElementById('lichess-live-section').style.display = 'flex';
   document.getElementById('lichess-game-status').textContent = 'Ieškoma varžovo... (gali užtrukti kelias minutes)';
 
