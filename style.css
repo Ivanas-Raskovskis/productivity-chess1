@@ -335,3 +335,36 @@ input[type="checkbox"] {
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
+#lichess-opponent {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 4px;
+}
+
+.clock-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clock {
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 700;
+  background: #14141f;
+  padding: 4px 12px;
+  border-radius: 6px;
+  color: #6fcf97;
+}
+
+.clock-label {
+  font-size: 12px;
+  color: #888;
+}
+
+.captured-row {
+  min-height: 20px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #ddd;
+}
